@@ -17,13 +17,7 @@ Contiene los archivos del sistema de bases de datos MySQL: subcarpetas, tablas, 
 
 ### Crear un contenedor con la imagen mysql:8  en la red net-wp, configurar las variables de entorno: MYSQL_ROOT_PASSWORD, MYSQL_DATABASE, MYSQL_USER y MYSQL_PASSWORD
 # COMPLETAR CON EL COMANDO
-docker run -d --name mysql-wp --network net-wp \
--e MYSQL_ROOT_PASSWORD=rootpass \
--e MYSQL_DATABASE=wordpressdb \
--e MYSQL_USER=wpuser \
--e MYSQL_PASSWORD=wppass \
--v "C:\Users\carol\ejercicio3\db":/var/lib/mysql \
-mysql:8
+docker run -d --name mysql-wp --network net-wp -e MYSQL_ROOT_PASSWORD=rootpass -e MYSQL_DATABASE=wordpressdb -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=wppass -v "C:\Users\User\ejercicio3\db":/var/lib/mysql mysql:8
 
 
 ### ¿Qué observa en la carpeta db que se encontraba inicialmente vacía?
@@ -35,17 +29,12 @@ Ahora contiene varios archivos y carpetas creados automáticamente por MySQL, qu
 En el esquema del ejercicio la carpeta del contenedor (b) es (COMPLETAR CON LA RUTA) /var/www/html
 
 Ruta carpeta host: .../ejercicio3/www
+C:\Users\carol\ejercicio3\www
 
 ### Crear un contenedor con la imagen wordpress en la red net-wp, configurar las variables de entorno WORDPRESS_DB_HOST, WORDPRESS_DB_USER, WORDPRESS_DB_PASSWORD y WORDPRESS_DB_NAME (los valores de estas variables corresponden a los del contenedor creado previamente)
 # COMPLETAR CON EL COMANDO
-docker run -d --name wordpress-wp --network net-wp \
--e WORDPRESS_DB_HOST=mysql-wp:3306 \
--e WORDPRESS_DB_USER=wpuser \
--e WORDPRESS_DB_PASSWORD=wppass \
--e WORDPRESS_DB_NAME=wordpressdb \
--p 9500:80 \
--v "C:\Users\carol\ejercicio3\www":/var/www/html \
-wordpress
+docker run -d --name wordpress-wp --network net-wp -e WORDPRESS_DB_HOST=mysql-wp:3306 -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=wppass -e WORDPRESS_DB_NAME=wordpressdb -p 9500:80 -v "C:\Users\User\ejercicio3\www":/var/www/html wordpress
+
 
 ### Personalizar la apariencia de wordpress y agregar una entrada
 
